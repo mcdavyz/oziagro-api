@@ -1,3 +1,5 @@
-def calculate_calculate_length(data):
-    data["SeasonLength"] = data["Cesssation"] = data["Onset"]
-    return data
+def calculate_season_length(summary):
+    summary["SeasonLength"] = (
+        summary["cessation_doy"] - summary["onset_doy"]
+    )
+    return summary
