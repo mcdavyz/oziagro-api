@@ -1,38 +1,49 @@
+
 from fastapi import APIRouter, UploadFile, File
 import shutil
 import os
+from app.config.settings import (UPLOAD_DIR,DEFAULT_DATASET,)
 
-
-from app.climate.reader import read_climate_data
-from app.climate.processor import process_dataset
+from app.climate.service import analyze_dataset
 
 router = APIRouter()
 
 
-@router.get("/analyze")
+@router.get("/analyze/sample")
 def analyze():
 
-    data = read_climate_data(
-        "data/raw/bende_daily_rainfall.xlsx"
-    )
-
-    summary = process_dataset(data)
-
+    summary = analyze_dataset(DEFAULT_DATASET)
     return summary.to_dict(orient="records")
 
-@router.post("/upload")
-async def upload_file(file: UploadFile = File(...)):
+@router.post("/analyze")
+async def analyze_uploaded_file(file: UploadFile = File(...)):
 
-    upload_folder = "data/uploads"
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-    os.makedirs(upload_folder, exist_ok=True)
+    file_path = UPLOAD_DIR / file.filename
+    allowed_extensions = [".xlsx", ".xls"]
+    filename = file.filename.lower()
 
-    file_path = os.path.join(upload_folder, file.filename)
-
+    if not any(filename.endswith(ext) for ext in allowed_extensions):
+        return { "error": "Only Excel (.xlsx or .xls) files are supported."
+        }
+    UPLOAD_DIR.anchor(parents=True, exist_ok=True)
+    file_path = UPLOAD_DIR / file.filename
+    
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+    try:
 
-    return {
-        "message": "File uploaded successfully.",
-        "filename": file.filename
-    }
+        summary = analyze_dataset(file_path)
+
+        return {
+            "status": "success",
+            "records": len(summary),
+            "results": summary.to_dict(orient="records")
+        }
+
+    except Exception as e:
+
+        return {
+        "error": str(e)
+        }

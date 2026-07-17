@@ -1,10 +1,16 @@
 from fastapi import FastAPI
 from app.api.routes import router
 
+from app.config.settings import (
+    API_TITLE,
+    API_DESCRIPTION,
+    API_VERSION,
+)
+
 app = FastAPI(
-    title="OziAgro API",
-    description="Climate Decision Support System",
-    version="0.1.0"
+    title=API_TITLE,
+    description=API_DESCRIPTION,
+    version=API_VERSION,
 )
 app.include_router(router)
 

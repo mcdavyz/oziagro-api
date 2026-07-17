@@ -74,3 +74,20 @@ def classify_dry_spell(longest):
     else:
         return "High"
 
+
+def classify_risk(onset, season, dry_spell):
+    """
+    Determine the overall seasonal risk.
+    """
+
+    if onset in ["Late", "Very Late"] and dry_spell == "High":
+        return "High"
+
+    elif season == "Short":
+        return "High"
+
+    elif onset == "Normal" and season == "Long" and dry_spell == "Low":
+        return "Low"
+
+    else:
+        return "Moderate"
