@@ -1,0 +1,2 @@
+class ClimateDataError(Exception):
+    pass

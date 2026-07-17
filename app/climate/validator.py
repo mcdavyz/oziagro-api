@@ -1,4 +1,6 @@
 import pandas as pd
+from app.exceptions.errors import ClimateDataError
+
 
 def validate_climate_data(data):
 
@@ -13,20 +15,24 @@ def validate_climate_data(data):
     # Check required columns
     for column in required_columns:
         if column not in data.columns:
-            raise ValueError(
+            raise ClimateDataError(
                 f"Missing required column: {column}"
             )
 
     # Check for missing values
     if data[required_columns].isnull().sum().sum() > 0:
-        raise ValueError(
-            "Dataset contains missing values."
+        raise ClimateDataError(
+            "Rainfall values contain missing value."
         )
 
     # Check for negative rainfall
     if (data["rain"] < 0).any():
-        raise ValueError(
+        raise ClimateDataError(
             "Rainfall cannot be negative."
         )
 
     return True
+
+    
+    
+
