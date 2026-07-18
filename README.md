@@ -266,16 +266,9 @@ pytest tests/test_advisor.py
 
 ## Contributing
 
-Contributions that improve the quality, reliability, and applicability of OziAgro are welcome.
+OziAgro is currently under active development.
 
-If you would like to contribute, please:
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Submit a pull request.
-
-Please ensure that new features include appropriate tests and documentation.
+Contribution guidelines will be published as the project approaches its first public release.
 
 ## License
 
