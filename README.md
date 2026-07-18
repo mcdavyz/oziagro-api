@@ -280,9 +280,11 @@ Contribution guidelines will be published as the project approaches its first pu
 
 ## License
 
-This project is currently released for academic research and educational purposes.
+Copyright © 2026 Okorie David Amah.
 
-A formal open-source license will be selected before the first public production release.
+OziAgro is currently distributed under an **All Rights Reserved** license.
+
+The software is provided for academic review and research purposes. Any reproduction, modification, redistribution, or commercial use requires prior written permission from the copyright holder.
 
 ## Author
 
