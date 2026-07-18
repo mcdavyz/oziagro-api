@@ -220,6 +220,14 @@ or
 pytest tests/test_advisor.py
 ```
 
+## Documentation
+
+Project documentation is available in the `docs/` directory.
+
+- API Reference (`docs/API.md`)
+- Developer Guide *(coming soon)*
+- Deployment Guide *(coming soon)*
+
 ## Example Workflow
 
 1. Start the FastAPI server.
