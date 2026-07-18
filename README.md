@@ -230,3 +230,75 @@ pytest tests/test_advisor.py
 6. Seasonal recommendations are generated.
 7. Results are returned as structured JSON for integration with external applications.
 
+## Roadmap
+
+### Completed
+
+- Climate Processing Engine
+- Climate data validation
+- Annual rainfall analysis
+- Rainfall onset detection
+- Rainfall cessation detection
+- Growing season length estimation
+- Dry spell analysis
+- Seasonal risk classification
+- Climate-based recommendation engine
+- FastAPI REST API
+- Automated unit testing
+- API integration testing
+
+### In Progress
+
+- API documentation
+- Decision Support System interfaces
+- Research documentation
+
+### Planned
+
+- Crop Yield Engine
+- Pest Risk Engine
+- Irrigation Engine
+- Soil Moisture Engine
+- AI-powered advisory system
+- Mobile application
+- Web dashboard
+- Research analytics portal
+
+## Contributing
+
+Contributions that improve the quality, reliability, and applicability of OziAgro are welcome.
+
+If you would like to contribute, please:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Submit a pull request.
+
+Please ensure that new features include appropriate tests and documentation.
+
+## License
+
+This project is currently released for academic research and educational purposes.
+
+A formal open-source license will be selected before the first public production release.
+
+## Author
+
+**Okorie Amah**
+
+M.Sc. Candidate in Agricultural Extension 
+
+University of Nigeria, Nsukka
+
+Research interests include AI applications in agriculture, decision support systems climate-smart agriculture, agricultural extension, and environmental sustainability.
+
+## Citation
+
+If you use OziAgro in academic research, please cite the project appropriately. Citation information will be provided following the first stable release.
+
+## Acknowledgements
+
+OziAgro is being developed as a research-driven initiative to advance climate-smart agriculture through open, modular, and reproducible analytical tools.
+
+The project integrates climate analytics, decision support, and software engineering principles to support sustainable agricultural development.
