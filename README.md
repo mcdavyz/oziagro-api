@@ -308,10 +308,10 @@ If you use **OziAgro Rainfall Analytics Engine** in academic research, please ci
 
 **APA 7th Edition**
 
-```bash
+
 > Amah, O. D. (2026). *OziAgro Rainfall Analytics Engine* (Version 1.0.0) [Computer software]. GitHub. https://github.com/mcdavyz/oziagro-api
 
-```
+
 
 **BibTeX**
 
