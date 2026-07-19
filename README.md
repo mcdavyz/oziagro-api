@@ -313,7 +313,7 @@ If you use **OziAgro Rainfall Analytics Engine** in academic research, please ci
 **BibTeX**
 
 ```bibtex
-@software{okorie2026oziagro,
+@software{amah2026oziagro,
   author  = {Amah, Okorie David},
   title   = {OziAgro Rainfall Analytics Engine},
   year    = {2026},
