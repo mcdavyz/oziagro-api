@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: OziAgro Rainfall Analytics Engine
+message: "If you use this software, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: Amah
+    given-names: Okorie David
+
+version: 1.0.0
+date-released: 2026-07-19
+
+repository-code: https://github.com/mcdavyz/oziagro-api
+
+license: All Rights Reserved
+
+abstract: >
+  OziAgro Rainfall Analytics Engine is a modular rainfall analysis engine
+  that processes historical daily rainfall datasets to derive agroclimatic
+  indicators including annual rainfall, rainfall onset, rainfall cessation,
+  growing season length, dry spell characteristics, seasonal risk assessment,
+  and decision-support outputs for climate-smart agriculture research.
