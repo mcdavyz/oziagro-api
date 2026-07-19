@@ -294,7 +294,7 @@ The software is provided for academic review and research purposes. Any reproduc
 
 ## Author
 
-**Okorie Amah**
+**Amah, Okorie David**
 
 M.Sc. Candidate in Agricultural Extension 
 
@@ -304,7 +304,24 @@ Research interests include AI applications in agriculture, decision support syst
 
 ## Citation
 
-If you use OziAgro Rainfall Analytics Engine in academic research, please cite the project appropriately. Citation information will be provided following the first stable release.
+If you use **OziAgro Rainfall Analytics Engine** in academic research, please cite the software as follows:
+
+**APA 7th Edition**
+
+> Amah, O. D. (2026). *OziAgro Rainfall Analytics Engine* (Version 1.0.0) [Computer software]. GitHub. https://github.com/mcdavyz/oziagro-api
+
+**BibTeX**
+
+```bibtex
+@software{okorie2026oziagro,
+  author  = {Amah, Okorie David},
+  title   = {OziAgro Rainfall Analytics Engine},
+  year    = {2026},
+  version = {1.0.0},
+  url     = {https://github.com/mcdavyz/oziagro-api},
+  publisher = {GitHub}
+}
+```
 
 ## Acknowledgements
 
