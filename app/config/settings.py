@@ -13,8 +13,8 @@ OUTPUT_DIR = DATA_DIR / "output"
 DEFAULT_DATASET = RAW_DATA_DIR / "bende_daily_rainfall.xlsx"
 
 # API information
-API_TITLE = "OziAgro DSS API"
+API_TITLE = "OziAgro RAINFALL ENGINE API"
 API_VERSION = "1.0.0"
 API_DESCRIPTION = (
-    "Precision Agriculture Decision Support System"
+    "Rainfall Analytics API for OziAgro Research Platform"
 )

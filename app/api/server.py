@@ -17,5 +17,7 @@ app.include_router(router)
 @app.get("/")
 def home():
     return {
-        "message": "Welcome to OziAgro DSS!"
+        "message": "Welcome to OziAgro Rainfall Data Analytics Engine",
+        "version": "1.0.0",
+        "status": " running..."
     }

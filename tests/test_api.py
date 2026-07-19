@@ -12,26 +12,30 @@ def test_home():
     assert response.status_code == 200
 
     assert response.json() == {
-        "message": "Welcome to OziAgro DSS!"
+        "message": "Welcome to OziAgro Rainfall Data Analytics Engine",
+        "version": "1.0.0",
+        "status": " running..."
     }
 
 
 def test_sample_analysis():
 
-    response = client.get("/analyze/sample")
+    response = client.get("/rainfall/sample")
 
     assert response.status_code == 200
 
     data = response.json()
 
-    assert isinstance(data, list)
+    assert data["status"] == "success"
 
-    assert len(data) > 0
+    assert data["records"] > 0
+
+    assert len(data["results"]) > 0
 
 
 def test_missing_upload():
 
-    response = client.post("/analyze")
+    response = client.post("/rainfall/analyze")
 
     assert response.status_code == 422
 
@@ -39,7 +43,7 @@ def test_missing_upload():
 def test_invalid_file():
 
     response = client.post(
-        "/analyze",
+        "/rainfall/analyze",
         files={
             "file": (
                 "notes.txt",
@@ -58,7 +62,7 @@ def test_upload_real_excel():
     with open("data/raw/bende_daily_rainfall.xlsx", "rb") as f:
 
         response = client.post(
-            "/analyze",
+            "/rainfall/analyze",
             files={
                 "file": (
                     "bende_daily_rainfall.xlsx",

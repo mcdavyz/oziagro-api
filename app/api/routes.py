@@ -11,16 +11,21 @@ from app.climate.service import analyze_dataset
 router = APIRouter()
 
 
-@router.get("/analyze/sample")
+@router.get("/rainfall/sample")
 def analyze():
 
     summary = analyze_dataset(DEFAULT_DATASET)
-    return summary.to_dict(orient="records")
 
-@router.post("/analyze")
+    return {
+        "status": "success",
+        "records": len(summary),
+        "results": summary.to_dict(orient="records")
+    }
+
+@router.post("/rainfall/analyze")
 async def analyze_uploaded_file(file: UploadFile = File(...)):
     logger.info(f"Received file:{file.filename}")
-    logger.info("Starting climate analysis")
+    logger.info("Starting rainfall analysis")
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
     file_path = UPLOAD_DIR / file.filename
