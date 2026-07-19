@@ -82,6 +82,7 @@ Results are returned as structured JSON suitable for integration with external s
 ### Example Output
 The API returns both measured values and interpreted results.
 
+```text
 {
   "Year": 2024,
   "AnnualRainfallMM": 1682.4,
@@ -96,13 +97,16 @@ The API returns both measured values and interpreted results.
   "DrySpellRisk": "Moderate",
   "OverallRisk": "High"
 }
+```
 This design allows researchers to cite the original climatic measurements while still benefiting from automated decision-support outputs.
 
 ### Software Architecture
 
+```text
 OziAgro Research Platform
 │
-├── Rainfall Analytics Engine (Current Repository)
+├── OziAgro Rainfall Analytics Engine (Current)
+│   │
 │   ├── Data Validation
 │   ├── Annual Rainfall Analysis
 │   ├── Rainfall Onset Detection
@@ -110,43 +114,23 @@ OziAgro Research Platform
 │   ├── Growing Season Analysis
 │   ├── Dry Spell Analysis
 │   ├── Seasonal Classification
-│   └── Risk Assessment
+│   ├── Risk Assessment
+│   └── REST API
+│
+├── OziAgro Decision Support System
+│   │
+│   ├── Recommendation Engine
+│   ├── Farmer Advisory
+│   ├── Extension Support
+│   ├── Research Analytics
+│   └── Policy Support
 │
 ├── Crop Yield Engine (Planned)
 ├── Pest Risk Engine (Planned)
 ├── Irrigation Engine (Planned)
 ├── Soil Moisture Engine (Planned)
 └── AI Advisory Engine (Planned)
-
-                │
-
-                ▼
-
-      OziAgro Decision Support System
-
-### Project Structure
-
-       oziagro-api/
-│
-├── app/
-│   ├── api/
-│   ├── climate/
-│   ├── recommendation/
-│   ├── config/
-│   ├── logging/
-│   ├── exceptions/
-│   └── utils/
-│
-├── data/
-│   ├── raw/
-│   ├── uploads/
-│   └── output/
-│
-├── docs/
-├── tests/
-├── README.md
-├── requirements.txt
-└── pytest.ini
+```
 
 ## Technology Stack
 
