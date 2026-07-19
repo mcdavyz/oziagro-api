@@ -1,139 +1,165 @@
-# OziAgro
+# OziAgro Rainfall Analytics Engine
 
-A modular research platform for climate-smart agriculture.
+A modular rainfall analytics engine powering the OziAgro Research Platform.
 
 ---
 
 ## Overview
 
-OziAgro is an open, modular research platform that transforms climate, environmental, and agricultural data into practical decision-support tools for sustainable agriculture.
+The OziAgro Rainfall Analytics Engine is the first analytical engine developed within the OziAgro Research Platform, an open, modular ecosystem for climate-smart agricultural research and decision support.
 
-The platform is designed to support farmers, agricultural extension agents, researchers, and policymakers through evidence-based analytics and intelligent decision support.
+The engine processes historical daily rainfall datasets and transforms them into reproducible agroclimatic indicators that can support agricultural research, extension services, and future intelligent decision-support systems.
 
-The first product developed within the platform is the **OziAgro Decision Support System (DSS)**, which provides climate risk analysis and seasonal recommendations for rainfed agriculture using historical climate data.
+Rather than providing only qualitative recommendations, the engine preserves the underlying scientific measurements, enabling researchers to report actual climatic values while also benefiting from automatically generated seasonal classifications and risk assessments.
 
-Rather than being limited to a single application, OziAgro is designed as an extensible research platform where additional analytical engines can be integrated over time, including crop yield prediction, pest forecasting, irrigation scheduling, soil moisture assessment, and AI-assisted agricultural advisory services.
-
----
-
-## Vision
-
-To build an open, research-driven platform that enables data-informed agricultural decision-making for climate-smart agriculture across Africa and beyond.
+The engine is exposed through a REST API built with FastAPI, making it suitable for integration into future applications including the OziAgro Decision Support System (DSS), mobile applications, dashboards, and AI advisory services.
 
 ---
 
 ## Objectives
 
-The OziAgro Research Platform aims to:
+The OziAgro Rainfall Analytics Engine aims to:
 
-- Transform climate and agricultural datasets into actionable knowledge.
-- Support evidence-based decision making for sustainable agriculture.
-- Provide practical decision-support tools for farmers and extension services.
-- Enable reproducible agricultural research through modular analytical engines.
-- Serve as a foundation for future AI-powered agricultural applications.
+- Transform historical daily rainfall observations into scientifically meaningful agroclimatic indicators.
+- Automate rainfall data validation and quality checking before analysis.
+- Detect rainfall onset and cessation dates using reproducible algorithms.
+- Quantify seasonal dry spell characteristics that influence crop production.
+- Generate structured rainfall analytics that can support agricultural research, extension services, and decision-support applications.
+
 
 ---
-## Current Features
 
-### Climate Processing Engine
+### Current Capabilities
+The Rainfall Analytics Engine currently performs:
 
-The Climate Processing Engine is the core analytical component of OziAgro. It processes historical daily rainfall data and derives agroclimatic indicators for seasonal decision support.
+### Data Validation
+- Dataset integrity checks
+- Missing value validation
+- Required column validation
+- Data consistency verification
 
-Current capabilities include:
-
-- Climate data validation
-- Annual rainfall analysis
+### Rainfall Analytics
+- Annual rainfall totals
 - Rainfall onset detection
 - Rainfall cessation detection
 - Growing season length estimation
-- Dry spell analysis
-- Seasonal climate risk classification
-- Climate-based advisory generation
+- Longest dry spell analysis
 
-### Decision Support API
+### Seasonal Classification
+The engine automatically classifies:
+- Rainfall onset
+- Rainfall cessation
+- Growing season length
+- Dry spell severity
+- Overall seasonal climate risk
 
-The OziAgro Decision Support System exposes its analytical capabilities through a RESTful API built with FastAPI.
+### Research Outputs
+Unlike many advisory systems, OziAgro returns both:
+(1) Raw analytical values for example:
+- Annual rainfall (mm)
+- Onset day of year
+- Cessation day of year
+- Season length
+- Longest dry spell
+(2) Decision-support interpretations for example:
+- Early onset
+- Long growing season
+- Moderate risk
+- High dry spell risk
 
-Available endpoints include:
+This makes the engine suitable for academic research, climate reports, agricultural extension,downstream AI systems.
 
-- Analyze a sample climate dataset
-- Upload and analyze Excel climate datasets
-- Return structured JSON results for downstream applications
+### API Features
+The engine exposes a RESTful API. Current endpoints include:
+| Endpoint              | Description                                   
+|-----------------------|----------------------------------------------
+| GET /                 | API information                              
+| GET /rainfall/sample  | Analyze bundled sample rainfall dataset      
+| POST /rainfall/analyze| Upload an Excel rainfall dataset for analysis
 
-### Software Quality
+Results are returned as structured JSON suitable for integration with external software.
 
-The current release includes:
+### Example Output
+The API returns both measured values and interpreted results.
 
-- Modular architecture
-- Automated unit testing
-- API integration testing
-- Structured error handling
-- Input validation
-- Logging support
+{
+  "Year": 2024,
+  "AnnualRainfallMM": 1682.4,
+  "OnsetDOY": 118,
+  "CessationDOY": 286,
+  "SeasonLengthDays": 168,
+  "LongestDrySpellDays": 14,
 
-## Technology Stack
+  "OnsetCategory": "Late",
+  "CessationCategory": "Normal",
+  "SeasonLengthCategory": "Moderate",
+  "DrySpellRisk": "Moderate",
+  "OverallRisk": "High"
+}
+This design allows researchers to cite the original climatic measurements while still benefiting from automated decision-support outputs.
 
-| Category                | Technology 
-|-------------------------|------------
-| Programming Language    | Python 
-| API Framework           | FastAPI 
-| Data Processing         | Pandas, NumPy 
-| Testing                 | Pytest 
-| Development Environment | Visual Studio Code 
-| Version Control         | Git & GitHub 
+### Software Architecture
 
-## Platform Architecture
-
-```text
 OziAgro Research Platform
 │
-├── Climate Engine (Current)
-│   ├── Climate Data Validation
+├── Rainfall Analytics Engine (Current Repository)
+│   ├── Data Validation
 │   ├── Annual Rainfall Analysis
 │   ├── Rainfall Onset Detection
 │   ├── Rainfall Cessation Detection
-│   ├── Growing Season Length
+│   ├── Growing Season Analysis
 │   ├── Dry Spell Analysis
-│   ├── Seasonal Risk Classification
-│   └── Climate Advisory Generation
-│
-├── OziAgro Decision Support System
-│   ├── Farmer Interface
-│   ├── Extension Agent Interface
-│   ├── Research Interface
-│   └── Policy Interface
+│   ├── Seasonal Classification
+│   └── Risk Assessment
 │
 ├── Crop Yield Engine (Planned)
 ├── Pest Risk Engine (Planned)
 ├── Irrigation Engine (Planned)
 ├── Soil Moisture Engine (Planned)
 └── AI Advisory Engine (Planned)
-```
 
-## Project Structure
+                │
 
-```text
-oziagro-api/
+                ▼
+
+      OziAgro Decision Support System
+
+### Project Structure
+
+       oziagro-api/
 │
 ├── app/
 │   ├── api/
 │   ├── climate/
-│   ├── advisory/
+│   ├── recommendation/
 │   ├── config/
-│   ├── logger/
+│   ├── logging/
 │   ├── exceptions/
-│   └── validators/
-│
-├── tests/
+│   └── utils/
 │
 ├── data/
 │   ├── raw/
-│   └── processed/
+│   ├── uploads/
+│   └── output/
 │
-├── requirements.txt
+├── docs/
+├── tests/
 ├── README.md
-└── .gitignore
-```
+├── requirements.txt
+└── pytest.ini
+
+## Technology Stack
+
+| Category                | Technology 
+|-------------------------|------------
+| Programming Language    | Python 3.12
+| API Framework           | FastAPI 
+| Data Processing         | Pandas, NumPy 
+| Testing                 | Pytest 
+| Development Environment | Visual Studio Code 
+| Version Control         | Git & GitHub 
+| Server                  | Uvicorn
+
 
 ## Installation
 
@@ -233,33 +259,35 @@ Project documentation is available in the `docs/` directory.
 1. Start the FastAPI server.
 2. Open the interactive API documentation.
 3. Upload a climate dataset in Excel format.
-4. The Climate Processing Engine validates the dataset.
+4. The rainfall  processing Engine validates the dataset.
 5. Agroclimatic indicators are calculated.
 6. Seasonal recommendations are generated.
 7. Results are returned as structured JSON for integration with external applications.
 
-## Roadmap
+## Development Roadmap
 
 ### Completed
 
-- Climate Processing Engine
-- Climate data validation
-- Annual rainfall analysis
+- Rainfall validation
+- Annual rainfall computation
 - Rainfall onset detection
 - Rainfall cessation detection
-- Growing season length estimation
+- Growing season estimation
 - Dry spell analysis
-- Seasonal risk classification
-- Climate-based recommendation engine
+- Seasonal classification
+- Climate risk assessment
 - FastAPI REST API
-- Automated unit testing
-- API integration testing
+- Automated testing
+- Structured error handling
 
-### In Progress
-
-- API documentation
-- Decision Support System interfaces
-- Research documentation
+### Next Milestones
+- PDF report generation
+- CSV and Excel export
+- Visualization module
+- Research report templates
+- AI advisory integration
+- Multi-engine orchestration
+- OziAgro Decision Support System
 
 ### Planned
 
@@ -272,17 +300,11 @@ Project documentation is available in the `docs/` directory.
 - Web dashboard
 - Research analytics portal
 
-## Contributing
-
-OziAgro is currently under active development.
-
-Contribution guidelines will be published as the project approaches its first public release.
-
 ## License
 
 Copyright © 2026 Okorie David Amah.
 
-OziAgro is currently distributed under an **All Rights Reserved** license.
+OziAgro Rainfall Analytics Engine is currently distributed under an **All Rights Reserved** license.
 
 The software is provided for academic review and research purposes. Any reproduction, modification, redistribution, or commercial use requires prior written permission from the copyright holder.
 
@@ -298,7 +320,7 @@ Research interests include AI applications in agriculture, decision support syst
 
 ## Citation
 
-If you use OziAgro in academic research, please cite the project appropriately. Citation information will be provided following the first stable release.
+If you use OziAgro Rainfall Analytics Engine in academic research, please cite the project appropriately. Citation information will be provided following the first stable release.
 
 ## Acknowledgements
 
