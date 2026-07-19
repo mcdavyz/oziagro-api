@@ -68,7 +68,7 @@ Unlike many advisory systems, OziAgro returns both:
 - High dry spell risk
 
 This makes the engine suitable for academic research, climate reports, agricultural extension,downstream AI systems.
-
+---
 ### API Features
 The engine exposes a RESTful API. Current endpoints include:
 | Endpoint              | Description                                   
@@ -79,6 +79,7 @@ The engine exposes a RESTful API. Current endpoints include:
 
 Results are returned as structured JSON suitable for integration with external software.
 
+---
 ### Example Output
 The API returns both measured values and interpreted results.
 
@@ -100,6 +101,7 @@ The API returns both measured values and interpreted results.
 ```
 This design allows researchers to cite the original climatic measurements while still benefiting from automated decision-support outputs.
 
+---
 ### Software Architecture
 
 ```text
@@ -131,7 +133,7 @@ OziAgro Research Platform
 ├── Soil Moisture Engine (Planned)
 └── AI Advisory Engine (Planned)
 ```
-
+---
 ## Technology Stack
 
 | Category                | Technology 
@@ -144,7 +146,7 @@ OziAgro Research Platform
 | Version Control         | Git & GitHub 
 | Server                  | Uvicorn
 
-
+---
 ## Installation
 
 ### Clone the Repository
@@ -229,7 +231,7 @@ or
 ```bash
 pytest tests/test_advisor.py
 ```
-
+---
 ## Documentation
 
 Project documentation is available in the `docs/` directory.
@@ -237,7 +239,7 @@ Project documentation is available in the `docs/` directory.
 - API Reference (`docs/API.md`)
 - Developer Guide *(coming soon)*
 - Deployment Guide *(coming soon)*
-
+---
 ## Example Workflow
 
 1. Start the FastAPI server.
@@ -247,7 +249,7 @@ Project documentation is available in the `docs/` directory.
 5. Agroclimatic indicators are calculated.
 6. Seasonal recommendations are generated.
 7. Results are returned as structured JSON for integration with external applications.
-
+---
 ## Development Roadmap
 
 ### Completed
@@ -263,7 +265,7 @@ Project documentation is available in the `docs/` directory.
 - FastAPI REST API
 - Automated testing
 - Structured error handling
-
+---
 ### Next Milestones
 - PDF report generation
 - CSV and Excel export
@@ -272,7 +274,7 @@ Project documentation is available in the `docs/` directory.
 - AI advisory integration
 - Multi-engine orchestration
 - OziAgro Decision Support System
-
+---
 ### Planned
 
 - Crop Yield Engine
@@ -283,7 +285,7 @@ Project documentation is available in the `docs/` directory.
 - Mobile application
 - Web dashboard
 - Research analytics portal
-
+---
 ## License
 
 Copyright © 2026 Okorie David Amah.
@@ -291,7 +293,7 @@ Copyright © 2026 Okorie David Amah.
 OziAgro Rainfall Analytics Engine is currently distributed under an **All Rights Reserved** license.
 
 The software is provided for academic review and research purposes. Any reproduction, modification, redistribution, or commercial use requires prior written permission from the copyright holder.
-
+---
 ## Author
 
 **Amah, Okorie David**
@@ -301,7 +303,7 @@ M.Sc. Candidate in Agricultural Extension
 University of Nigeria, Nsukka
 
 Research interests include AI applications in agriculture, decision support systems climate-smart agriculture, agricultural extension, and environmental sustainability.
-
+---
 ## Citation
 
 If you use **OziAgro Rainfall Analytics Engine** in academic research, please cite the software as follows:
@@ -325,7 +327,7 @@ If you use **OziAgro Rainfall Analytics Engine** in academic research, please ci
   publisher = {GitHub}
 }
 ```
-
+---
 ## Acknowledgements
 
 OziAgro is being developed as a research-driven initiative to advance climate-smart agriculture through open, modular, and reproducible analytical tools.
