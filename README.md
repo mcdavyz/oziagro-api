@@ -65,7 +65,8 @@ Unlike many advisory systems, OziAgro returns both:
 - Early onset
 - Long growing season
 - Moderate risk
-- High dry spell risk
+- High dry spell risk.
+
 This makes the engine suitable for academic research, climate reports, agricultural extension,downstream AI systems.
 
 
