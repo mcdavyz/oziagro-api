@@ -1,58 +1,77 @@
-from .rules import classify_risk
-from .rules import (classify_onset,classify_cessation,classify_season_length,classify_dry_spell, classify_risk)
+import pandas as pd
+
+from .rules import (
+    classify_onset,
+    classify_cessation,
+    classify_season_length,
+    classify_dry_spell,
+    classify_risk,
+)
+
 
 def generate_recommendation(row):
     """
-    Generate recommendations for one season.
+    Generate rainfall analysis for one year.
+
+    Returns:
+    - Scientific rainfall metrics
+    - Standardized classifications
     """
 
-    onset = classify_onset(row["onset_doy"])
-    cessation = classify_cessation(row["cessation_doy"])
-    season = classify_season_length(row["SeasonLength"])
-    dry_spell = classify_dry_spell(row["LongestDrySpell"])
-    risk = classify_risk(onset, season, dry_spell)
-    
-    return {
-        "Onset": onset,
-        "Cessation": cessation,
-        "SeasonLength": season,
-        "DrySpellRisk": dry_spell,
-        "OverallRisk": risk,
-    }
+    onset_category = classify_onset(row["onset_doy"])
+    cessation_category = classify_cessation(row["cessation_doy"])
+    season_category = classify_season_length(row["SeasonLength"])
+    dry_spell_category = classify_dry_spell(row["LongestDrySpell"])
 
-def generate_season_summary(
-    onset,
-    season,
-    dry_spell,
-    risk
-):
-    """
-    Generate a readable seasonal summary.
-    """
-
-    return (
-        f"Rainfall onset is {onset.lower()}, "
-        f"the growing season is {season.lower()}, "
-        f"and dry spell risk is {dry_spell.lower()}. "
-        f"Overall seasonal risk is {risk.lower()}."
+    overall_risk = classify_risk(
+        onset_category,
+        season_category,
+        dry_spell_category,
     )
 
-import pandas as pd
+    return {
+
+        # ===============================
+        # Year
+        # ===============================
+        "year": int(row["year"]),
+
+        # ===============================
+        # Scientific Rainfall Metrics
+        # ===============================
+        "AnnualRainfallMM": round(float(row["AnnualRainfall"]), 1),
+
+        "OnsetDayOfYear": int(row["onset_doy"]),
+        "CessationDayOfYear": int(row["cessation_doy"]),
+
+        "SeasonLengthDays": int(row["SeasonLength"]),
+
+        "LongestDrySpellDays": int(row["LongestDrySpell"]),
+
+        # ===============================
+        # Climate Classifications
+        # ===============================
+        "OnsetCategory": onset_category,
+
+        "CessationCategory": cessation_category,
+
+        "SeasonLengthCategory": season_category,
+
+        "DrySpellRisk": dry_spell_category,
+
+        "OverallRisk": overall_risk,
+    }
 
 
 def generate_all_recommendations(summary):
     """
-    Generate recommendations for every year.
+    Generate rainfall analysis for all years.
     """
 
     reports = []
 
     for _, row in summary.iterrows():
 
-        report = generate_recommendation(row)
-
-        report["year"] = row["year"]
-
-        reports.append(report)
+        reports.append(generate_recommendation(row))
 
     return pd.DataFrame(reports)

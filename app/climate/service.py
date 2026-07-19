@@ -3,11 +3,21 @@ from .reader import read_climate_data
 from .processor import process_dataset
 
 
+#def analyze_dataset(file_path):
+
+    #data = read_climate_data(file_path)
+    #summary = process_dataset(data)
+    
+    #recommendations = generate_all_recommendations(summary)
+
+   # return recommendations
+
 def analyze_dataset(file_path):
 
     data = read_climate_data(file_path)
-    summary = process_dataset(data)
-    
-    recommendations = generate_all_recommendations(summary)
 
-    return recommendations
+    summary = process_dataset(data)
+
+    summary = generate_all_recommendations(summary)
+
+    return summary
