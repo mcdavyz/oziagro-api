@@ -293,8 +293,9 @@ Project documentation is available in the `docs/` directory.
 Copyright © 2026 Okorie David Amah.
 
 OziAgro Rainfall Analytics Engine is currently distributed under an **All Rights Reserved** license.
-
 The software is provided for academic review and research purposes. Any reproduction, modification, redistribution, or commercial use requires prior written permission from the copyright holder.
+
+
 ---
 ## Author
 
@@ -305,6 +306,7 @@ M.Sc. Candidate in Agricultural Extension
 University of Nigeria, Nsukka
 
 Research interests include AI applications in agriculture, decision support systems climate-smart agriculture, agricultural extension, and environmental sustainability.
+
 ---
 ## Citation
 
